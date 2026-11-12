@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- custom -->
+<!-- BOOMER: 2012 social-network boomer page over a parallax suburb. hand-built, single file -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$BOOMER | back in my day we bought the dip with REAL money</title>
+<meta name="description" content="$BOOMER: sunglasses on, lawn mowed, wife tagged in every post. A meme coin on Solana. SHARE IF YOU AGREE. Type AMEN.">
+<meta name="theme-color" content="#3b5998">
+<meta property="og:title" content="$BOOMER: SHARE IF YOU AGREE">
+<meta property="og:description" content="back in my day we bought the dip with REAL money. A meme coin on Solana.">
+<meta property="og:image" content="banner.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Pacifico&family=Lobster&display=swap" rel="stylesheet">
+<style>
+:where(img){height:auto}
+:root{--blue:#3b5998;--blue2:#6d84b4;--pale:#edf0f5;--line:#dddfe2;--txt:#1d2129;--mut:#90949c;--link:#365899;--grass:#4caf3a;--grass2:#3e9a2e;
+  --comic:'Comic Neue','Comic Sans MS','Comic Sans',cursive;--ui:'Lucida Grande',Tahoma,Verdana,Arial,sans-serif;--script:'Pacifico',cursive;--lob:'Lobster',cursive}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+body{margin:0;background:#9fd4f5;color:var(--txt);font-family:var(--ui);font-size:14px;line-height:1.45}
+img{max-width:100%;display:block}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer}
+
+/* ===== SUBURBIA (parallax) ===== */
+#burb{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:linear-gradient(#7cc4f2,#c9ecff 70%)}
+.lay{position:absolute;left:0;right:0;will-change:transform}
+.clouds{top:0;height:200vh}
+.cl{position:absolute;width:160px;height:44px;background:#fff;border-radius:40px;box-shadow:40px -18px 0 4px #fff,90px -6px 0 0 #fff;opacity:.95}
+.sunb{position:absolute;right:8vw;top:6vh;width:110px;height:110px;border-radius:50%;background:#ffe14d;box-shadow:0 0 0 14px rgba(255,225,77,.35),0 0 80px 30px rgba(255,225,77,.4)}
+.houses{bottom:0;height:62vh}
+.houses svg,.fence svg{position:absolute;bottom:0;width:100%;height:100%}
+.fence{bottom:-6vh;height:30vh}
+.yard{bottom:-30vh;height:44vh;background:linear-gradient(var(--grass),var(--grass2))}
+.grill{position:absolute;left:6vw;bottom:24vh;width:90px}
+.smoke{position:absolute;left:30px;bottom:80px;width:30px;height:30px;border-radius:50%;background:rgba(240,240,240,.8);animation:puff 3.5s ease-out infinite}
+.smoke:nth-child(2){animation-delay:-1.2s;left:44px}.smoke:nth-child(3){animation-delay:-2.4s;left:22px}
+@keyframes puff{0%{transform:translateY(0) scale(.4);opacity:.9}100%{transform:translateY(-160px) translateX(30px) scale(2.2);opacity:0}}
+.spr{position:absolute;right:10vw;bottom:20vh;width:12px;height:22px;background:#555;border-radius:3px}
+.spr::before{content:"";position:absolute;left:-90px;top:-80px;width:190px;height:100px;border-radius:50% 50% 0 0;border-top:3px dotted rgba(255,255,255,.9);border-left:3px dotted rgba(255,255,255,.6);border-right:3px dotted rgba(255,255,255,.6);transform-origin:bottom center;animation:spray 2.4s ease-in-out infinite alternate}
+@keyframes spray{from{transform:rotate(-30deg)}to{transform:rotate(30deg)}}
+
+/* ===== TOP BAR ===== */
+.top{position:sticky;top:0;z-index:40;background:var(--blue);border-bottom:1px solid #29487d;color:#fff}
+.top .in{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:6px 12px}
+.logo{font-family:'Klavika',var(--ui);font-weight:700;font-size:24px;letter-spacing:-.5px;color:#fff}
+.search{flex:1;max-width:380px;background:#fff;border:1px solid #20365f;color:var(--mut);padding:4px 8px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.notif{margin-left:auto;display:flex;gap:12px;font-size:16px}
+.notif span{position:relative}
+.notif b{position:absolute;top:-6px;right:-9px;background:#f03d25;color:#fff;font-size:10px;border-radius:3px;padding:0 4px}
+.mq{background:#fffbe2;border-bottom:1px solid #e6d78a;color:#b00;font-family:var(--comic);font-weight:700;white-space:nowrap;overflow:hidden;position:relative;z-index:2}
+.mq span{display:inline-block;padding:4px 0 4px 100%;animation:mq 28s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+
+/* ===== LAYOUT ===== */
+.page{max-width:1000px;margin:16px auto;display:grid;grid-template-columns:200px 1fr 250px;gap:14px;padding:0 10px;position:relative;z-index:2;align-items:start}
+.box{background:#fff;border:1px solid var(--line);border-radius:3px}
+.side{position:sticky;top:60px}
+.prof img{width:100%;aspect-ratio:1;object-fit:cover;border-bottom:1px solid var(--line)}
+.prof .n{padding:8px 10px;font-weight:700;font-size:15px}
+.prof ul{list-style:none;margin:0;padding:0 10px 10px;font-size:13px}
+.prof li{padding:3px 0}
+.prof li::before{content:"\25B8 ";color:var(--blue2)}
+
+/* posts */
+.post{margin-bottom:14px;padding:12px}
+.ph{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.ph img{width:40px;height:40px;object-fit:cover}
+.ph .who{font-weight:700;color:var(--link)}
+.ph .when{color:var(--mut);font-size:12px}
+.post .body{font-size:15px;margin-bottom:8px}
+.post .body.cs{font-family:var(--comic);font-size:18px;font-weight:700}
+.acts{display:flex;gap:14px;border-top:1px solid var(--line);margin-top:10px;padding-top:6px;font-size:13px;color:var(--link)}
+.acts button{background:none;border:0;color:var(--link);padding:2px 0}
+.acts button:hover{text-decoration:underline}
+.acts button.on{font-weight:700}
+.likes{background:var(--pale);padding:6px 8px;margin-top:6px;font-size:12px}
+.cmt{background:var(--pale);padding:6px 8px;margin-top:1px;font-size:13px;display:flex;gap:6px}
+.cmt b{color:var(--link)}
+.cmt i{display:inline-block;width:28px;height:28px;flex:none;background:var(--blue2);border-radius:2px}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+
+/* hero post */
+.glitter{font-family:var(--lob);font-size:clamp(46px,9vw,84px);line-height:1;text-align:center;margin:6px 0 2px;
+  background:linear-gradient(110deg,#ff00c8,#ffd700 20%,#fff 25%,#00e5ff 40%,#ff00c8 60%,#fff 65%,#ffd700 80%,#ff00c8);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:glit 2.5s linear infinite;filter:drop-shadow(2px 2px 0 #000)}
+@keyframes glit{to{background-position:300% 0}}
+.sparkle{position:relative}
+.sparkle::before,.sparkle::after{content:"\2728";position:absolute;font-size:28px;animation:tw 1.2s ease-in-out infinite}
+.sparkle::before{left:6%;top:0}.sparkle::after{right:6%;top:30%;animation-delay:-.6s}
+@keyframes tw{50%{transform:scale(.4) rotate(90deg);opacity:.4}}
+.heroimg{position:relative;border:1px solid var(--line)}
+.heroimg img{width:100%}
+.heroimg .cap{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:Impact,'Arial Black',sans-serif;font-size:clamp(20px,4vw,34px);color:#fff;-webkit-text-stroke:2px #000;paint-order:stroke;text-transform:uppercase;padding:0 10px;line-height:1.05}
+.tick{text-align:center;font-family:var(--comic);font-weight:700;font-size:18px;color:#b00}
+.cta{display:flex;justify-content:center;gap:10px;margin:12px 0 4px;flex-wrap:wrap}
+.fbbtn{display:inline-block;background:linear-gradient(#5b7bc0,var(--blue));color:#fff!important;border:1px solid #29487d;font-weight:700;padding:8px 18px;border-radius:2px;font-size:15px;text-decoration:none!important}
+.fbbtn.g{background:linear-gradient(#69a74e,#4a8a32);border-color:#3b6e28}
+.fbbtn:active{transform:translateY(1px)}
+
+/* inspirational sunset images */
+.insp{position:relative;aspect-ratio:16/10;display:grid;place-items:center;text-align:center;padding:24px;overflow:hidden;
+  background:radial-gradient(circle at 50% 78%,#fff3a8 0,#ffbe55 12%,transparent 30%),linear-gradient(#2d1b69 0%,#c2457a 45%,#ff8c42 70%,#1f3b4d 71%,#0e2230)}
+.insp::after{content:"";position:absolute;left:0;right:0;bottom:0;height:29%;background:repeating-linear-gradient(0deg,rgba(255,200,120,.25) 0 2px,transparent 2px 9px)}
+.insp p{position:relative;z-index:1;margin:0;font-family:var(--script);font-size:clamp(20px,3.6vw,32px);color:#fff;text-shadow:2px 2px 6px #000;line-height:1.3}
+.insp small{display:block;font-family:var(--comic);font-size:16px;margin-top:10px;font-weight:700}
+.insp.y{background:linear-gradient(#ffe95c,#ffd000);}
+.insp.y::after{display:none}
+.insp.y p{font-family:Impact,'Arial Black',sans-serif;color:#1d1d1d;text-shadow:none;font-size:clamp(20px,3.4vw,30px);text-transform:uppercase}
+.blob{position:absolute;left:4%;bottom:6%;font-size:clamp(40px,8vw,70px);transform:rotate(-12deg)}
+
+/* lore see more */
+.more{display:none}
+.lore.open .more{display:inline}
+.lore.open .smore{display:none}
+.smore{background:none;border:0;color:var(--link);font-weight:700;padding:0}
+
+/* album */
+.album{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.album button{border:0;padding:0;background:#000;aspect-ratio:1;overflow:hidden}
+.album img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.album button:hover img{transform:scale(1.08)}
+#lb{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.85);display:none;place-items:center;padding:16px}
+#lb.on{display:grid}
+#lb .bx{background:#fff;max-width:720px;width:100%;display:grid;grid-template-columns:1fr 220px}
+#lb .im{background:#000;display:grid;place-items:center}
+#lb img{max-height:70vh}
+#lb .cm{padding:10px;font-size:13px}
+#lb .x{float:right;background:var(--blue);color:#fff;border:0;padding:2px 8px}
+
+/* lawn mower */
+.lawn{position:relative;z-index:2;height:220px;margin:10px 0 0;background:var(--grass);overflow:hidden;border-top:6px solid #2f7a22;border-bottom:6px solid #2f7a22}
+.lawn .tall{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 6px,rgba(0,60,0,.25) 6px 8px),linear-gradient(#56b843,#3f9d30)}
+.lawn .mowed{position:absolute;left:0;top:0;bottom:0;width:0;background:repeating-linear-gradient(180deg,#7ed36a 0 36px,#5cb848 36px 72px)}
+.mower{position:absolute;top:50%;left:0;transform:translate(-50%,-50%);width:150px;font-size:0}
+.lawn .lbl{position:absolute;left:50%;top:12px;transform:translateX(-50%);font-family:var(--comic);font-weight:700;font-size:20px;color:#fff;text-shadow:2px 2px 0 #1e5a14;white-space:nowrap;z-index:2}
+.clip{position:absolute;bottom:20px;width:6px;height:6px;background:#8fe07a;border-radius:2px;animation:clip .8s ease-out forwards}
+@keyframes clip{to{transform:translate(var(--dx),-60px) rotate(200deg);opacity:0}}
+
+/* steps */
+.steps{margin:0;padding-left:22px;font-family:var(--comic);font-size:17px}
+.steps li{margin:6px 0}
+.steps b{color:#b00}
+
+/* tokenomics */
+.tok{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.tok div{background:var(--pale);border:1px solid var(--line);text-align:center;padding:10px 6px}
+.tok b{display:block;font-size:17px;color:var(--blue)}
+.ca{display:flex;gap:6px;margin-top:10px}
+.ca code{flex:1;background:#f6f7f9;border:1px solid #bdc7d8;padding:8px;font-size:13px;word-break:break-all}
+
+/* right column */
+.rbox{padding:10px;margin-bottom:12px}
+.rbox h4{margin:0 0 6px;font-size:12px;color:var(--mut);text-transform:uppercase;border-bottom:1px solid var(--line);padding-bottom:4px}
+.rbox p{margin:6px 0;font-size:13px}
+.req{display:flex;gap:8px;align-items:center}
+.req i{width:40px;height:40px;flex:none;background:linear-gradient(#7ed36a,#3f9d30);border:1px solid #2f7a22;display:grid;place-items:center;font-style:normal;font-size:22px}
+.links a{display:block;padding:4px 0;border-bottom:1px dotted var(--line)}
+.uc{height:14px;background:repeating-linear-gradient(45deg,#000 0 8px,#ffd000 8px 16px);margin:6px 0}
+.ctr{font-family:monospace;background:#000;color:#0f0;padding:2px 6px;letter-spacing:2px}
+
+footer{position:relative;z-index:2;background:#fff;border-top:1px solid var(--line);padding:24px 16px 40px;text-align:center;font-size:12px;color:var(--mut)}
+footer .bdg{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:10px}
+footer .bdg span{border:2px outset #ccc;background:#eee;color:#333;font-size:10px;padding:2px 8px;font-family:Verdana,sans-serif}
+footer p{max-width:720px;margin:8px auto 0}
+
+/* poke popup */
+.pop{position:fixed;z-index:70;right:14px;bottom:14px;width:min(290px,90vw);background:#fff;border:1px solid #8b9dc3;box-shadow:0 6px 20px rgba(0,0,0,.35);transform:translateY(150%);transition:transform .45s cubic-bezier(.3,1.5,.5,1)}
+.pop.on{transform:none}
+.pop .t{background:var(--blue);color:#fff;font-weight:700;font-size:12px;padding:5px 8px;display:flex;justify-content:space-between}
+.pop .t button{background:none;border:0;color:#fff;font-weight:700}
+.pop .b{padding:10px;display:flex;gap:8px;align-items:center;font-size:13px}
+.pop .b img{width:46px;height:46px;object-fit:cover}
+
+@media(max-width:900px){.page{grid-template-columns:1fr 240px}.left{display:none}}
+@media(max-width:680px){
+  .page{grid-template-columns:1fr}.right{order:2}.side{position:static}
+  .album{grid-template-columns:repeat(3,1fr)}
+  #lb .bx{grid-template-columns:1fr}
+  .search{display:none}
+  .tok{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+@supports (overflow:clip){html,body{overflow-x:clip}}
+</style>
+</head>
+<body>
+
+<div id="burb" aria-hidden="true">
+  <div class="lay clouds" data-speed="-0.06"><div class="sunb"></div><div class="cl" style="left:8%;top:12%"></div><div class="cl" style="left:46%;top:6%;transform:scale(.7)"></div><div class="cl" style="left:70%;top:28%;transform:scale(1.2)"></div><div class="cl" style="left:20%;top:62%"></div><div class="cl" style="left:62%;top:90%;transform:scale(.8)"></div></div>
+  <div class="lay houses" data-speed="0.12">
+    <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMax slice"><g stroke="#333" stroke-width="3">
+      <rect x="60" y="210" width="260" height="190" fill="#f3e3c3"/><polygon points="40,215 190,110 340,215" fill="#b5463b"/><rect x="170" y="300" width="50" height="100" fill="#7a4b2a"/><rect x="90" y="250" width="50" height="45" fill="#bfe6ff"/><rect x="250" y="250" width="50" height="45" fill="#bfe6ff"/>
+      <rect x="440" y="180" width="330" height="220" fill="#fff"/><polygon points="420,185 605,70 790,185" fill="#5a6f8a"/><rect x="470" y="290" width="150" height="110" fill="#ddd"/><line x1="470" y1="315" x2="620" y2="315"/><line x1="470" y1="340" x2="620" y2="340"/><line x1="470" y1="365" x2="620" y2="365"/><rect x="660" y="300" width="50" height="100" fill="#3b5998"/><rect x="660" y="220" width="70" height="50" fill="#bfe6ff"/><line x1="770" y1="200" x2="770" y2="80"/><rect x="772" y="80" width="60" height="38" fill="#fff"/><rect x="772" y="80" width="24" height="18" fill="#3b5998"/>
+      <rect x="900" y="230" width="240" height="170" fill="#c9e3c0"/><polygon points="880,235 1020,140 1160,235" fill="#8a5a3b"/><rect x="990" y="310" width="45" height="90" fill="#fff"/><rect x="920" y="265" width="50" height="40" fill="#bfe6ff"/><rect x="1070" y="265" width="50" height="40" fill="#bfe6ff"/></g></svg>
+  </div>
+  <div class="lay fence" data-speed="0.22"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><g fill="#fff" stroke="#bbb" stroke-width="2"><rect x="0" y="50" width="1200" height="12"/><rect x="0" y="85" width="1200" height="12"/><g id="pk"><polygon points="10,120 10,30 22,14 34,30 34,120"/><polygon points="60,120 60,30 72,14 84,30 84,120"/><polygon points="110,120 110,30 122,14 134,30 134,120"/><polygon points="160,120 160,30 172,14 184,30 184,120"/><polygon points="210,120 210,30 222,14 234,30 234,120"/><polygon points="260,120 260,30 272,14 284,30 284,120"/></g><use href="#pk" x="300"/><use href="#pk" x="600"/><use href="#pk" x="900"/></g></svg></div>
+  <div class="lay yard" data-speed="0.35"></div>
+  <div class="lay" data-speed="0.35" style="bottom:0;height:100vh">
+    <div class="grill"><div class="smoke"></div><div class="smoke"></div><div class="smoke"></div>
+      <svg viewBox="0 0 90 110" width="90"><ellipse cx="45" cy="40" rx="40" ry="26" fill="#222"/><rect x="5" y="36" width="80" height="6" fill="#555"/><line x1="20" y1="60" x2="10" y2="108" stroke="#222" stroke-width="5"/><line x1="70" y1="60" x2="80" y2="108" stroke="#222" stroke-width="5"/><line x1="45" y1="64" x2="45" y2="108" stroke="#222" stroke-width="5"/></svg></div>
+    <div class="spr"></div>
+  </div>
+</div>
+
+<div class="top"><div class="in"><span class="logo">bookface</span><div class="search">&#128269; how do i buy the bitcoin on the bookface</div><div class="notif"><span>&#128101;<b>3</b></span><span>&#128172;<b>7</b></span><span>&#127758;<b>99+</b></span></div></div></div>
+<div class="mq" role="marquee"><span>&#127775; SHARE IF YOU AGREE &#127775; Type AMEN if you remember when a sandwich was a nickel &#127775; 97% of people won't repost this. Are you the 3%?? &#127775; $BOOMER ON SOLANA &#127775; my son set this up for me &#127775; HOW DO I TURN OFF CAPS LOCK &#127775; </span></div>
+
+<div class="page">
+  <aside class="left side">
+    <div class="box prof">
+      <img src="logo.png" alt="Boomer wojak in sunglasses with his wife">
+      <div class="n">Boomer (Dad)</div>
+      <ul><li>Lives in: The Suburbs</li><li>Works at: Retired (lawn)</li><li>Married to: Linda &#10084;&#65039;</li><li>Joined: when it was for college kids</li><li><a href="#lore">About me</a></li><li><a href="#photos">Photos (12)</a></li><li><a href="#buy">How to buy</a></li></ul>
+    </div>
+  </aside>
+
+  <main>
+    <!-- HERO POST -->
+    <article class="box post" id="top">
+      <div class="ph"><img src="favicon.png" alt=""><div><div class="who">Boomer (Dad)</div><div class="when">Just now via Mobile Web &middot; &#127758;</div></div></div>
+      <div class="sparkle"><div class="glitter">$BOOMER</div></div>
+      <div class="tick">*~* back in my day we bought the dip with REAL money *~*</div>
+      <div class="heroimg" style="margin-top:10px"><img src="meme_01.jpg" alt="Boomer wojak in sunglasses holding a beer, his wife beside him, lawnmower in the background"><div class="cap">ME AND THE WIFE AT THE LAKE.<br>BOUGHT $BOOMER</div></div>
+      <div class="cta"><a class="fbbtn g" href="#buy">BUY $BOOMER</a><a class="fbbtn" href="#lore">READ DAD'S POST</a></div>
+      <div class="acts"><button class="lk">Like</button><button class="cmtb">Comment</button><button class="shr">Share</button></div>
+      <div class="likes">&#128077; <span class="lc">You and 1,204</span> others like this.</div>
+      <div class="cmt"><i></i><div><b>Linda</b> who is this posted to?? is this the public</div></div>
+      <div class="cmt"><i></i><div><b>Boomer (Dad)</b> LOL (lots of love) linda its the internet</div></div>
+    </article>
+
+    <!-- LORE -->
+    <article class="box post lore" id="lore">
+      <div class="ph"><img src="favicon.png" alt=""><div><div class="who">Boomer (Dad)</div><div class="when">Yesterday at 5:02am &middot; Notes</div></div></div>
+      <div class="body cs rv">MY STORY (please read to the end)</div>
+      <div class="body">The Boomer is a wojak, one of those simple drawn faces the internet uses for everybody. Wraparound sunglasses. Bald head, white goatee, beer in hand, sometimes a flat cap, a cane and a bag of butterscotch candies. He mows the lawn. He loves his wife. He loves his car. He does not understand why you are paying $1,400 a month to live in a box. <span class="more">
+      <br><br>He came up through the late-2010s "boomer" memes, alongside his cousins in the stick-figure world: <b>Bill</b> ("Bill sees something that offends him. Bill moves on. Bill is smart. Be like Bill.") and <b>Mike</b> ("Mike got pre-approved for a mortgage before looking at homes. Mike thinks ahead.").
+      <br><br>Somewhere along the way "OK boomer" became a whole thing, and Dad took it personally. So he did what any reasonable man would do. He bought a pressure washer, re-sealed the driveway, and then asked his grandson how to "get on the Solana".
+      <br><br>$BOOMER is a coin for everyone who forwards chain emails with sincerity, thinks the dip is something you put chips in, and still believes a firm handshake will get you the job. Share this with 10 friends or nothing happens (which is exactly what will happen anyway).</span>
+      <button class="smore" id="smore">...See More</button></div>
+      <div class="acts"><button class="lk">Like</button><button class="cmtb">Comment</button><button class="shr">Share</button></div>
+      <div class="likes">&#128077; <span class="lc">Linda and 312</span> others like this.</div>
+      <div class="cmt"><i></i><div><b>Uncle Ron</b> AMEN</div></div>
+    </article>
+
+    <!-- INSPIRATIONAL -->
+    <article class="box post rv">
+      <div class="ph"><img src="favicon.png" alt=""><div><div class="who">Boomer (Dad)</div><div class="when">shared a photo &middot; 3 hours ago</div></div></div>
+      <div class="insp"><p>"A coin is just a coin<br>until you HODL it with your heart"<small>~ Type AMEN if you agree ~</small></p></div>
+      <div class="acts"><button class="lk">Like</button><button class="amen">Type AMEN</button><button class="shr">Share</button></div>
+      <div class="likes">&#128591; <span id="amens">2,887</span> people typed AMEN.</div>
+    </article>
+
+    <!-- PHOTOS -->
+    <article class="box post" id="photos">
+      <div class="ph"><img src="favicon.png" alt=""><div><div class="who">Boomer (Dad)</div><div class="when">added 12 new photos to the album <a href="#photos">MY LAWN AND OTHER THINGS</a></div></div></div>
+      <div class="album" id="album"></div>
+      <div class="acts"><button class="lk">Like</button><button class="cmtb">Comment</button><button class="shr">Share</button></div>
+      <div class="cmt"><i></i><div><b>Son</b> dad why are there 4 of the same picture</div></div>
+      <div class="cmt"><i></i><div><b>Boomer (Dad)</b> because i pressed the button 4 times son</div></div>
+    </article>
+  </main>
+
+  <aside class="right side">
+    <div class="box rbox"><h4>Requests</h4><div class="req"><i>&#127793;</i><p><b>Dad</b> sent you a request in <b>LawnVille</b>: "help me fertilize my crops"</p></div></div>
+    <div class="box rbox"><h4>Pages Dad likes</h4><div class="links"><a href="#">$BOOMER on X</a><a href="#">$BOOMER on pump.fun</a><a href="#">$BOOMER on DexScreener</a></div></div>
+    <div class="box rbox"><h4>Sponsored</h4><p><b>Local Dad discovers ONE WEIRD TRICK</b> (he turned it off and on again)</p><div class="uc"></div><p style="font-size:11px">this page under construction since the grandson left</p></div>
+    <div class="box rbox"><h4>Visitors</h4><p>You are visitor <span class="ctr" id="hits">0000000</span></p><p style="font-size:11px">best viewed on Dad's 15" monitor at 125% zoom</p></div>
+  </aside>
+</div>
+
+<!-- LAWN MOWER (scroll-driven) -->
+<section class="lawn" id="lawn" aria-label="Dad mowing the lawn as you scroll">
+  <div class="tall"></div><div class="mowed" id="mowed"></div>
+  <div class="lbl" id="lawnlbl">SCROLL TO MOW THE LAWN</div>
+  <svg class="mower" id="mower" viewBox="0 0 150 90" aria-hidden="true"><rect x="20" y="40" width="90" height="34" rx="8" fill="#d32f2f" stroke="#222" stroke-width="3"/><rect x="40" y="30" width="40" height="14" fill="#555"/><line x1="105" y1="44" x2="145" y2="4" stroke="#222" stroke-width="5"/><line x1="135" y1="4" x2="148" y2="16" stroke="#222" stroke-width="6"/><circle cx="35" cy="78" r="11" fill="#222"/><circle cx="95" cy="78" r="11" fill="#222"/><circle cx="35" cy="78" r="4" fill="#aaa"/><circle cx="95" cy="78" r="4" fill="#aaa"/></svg>
+</section>
+
+<div class="page" style="grid-template-columns:1fr;max-width:640px">
+  <div>
+    <!-- HOW TO BUY -->
+    <article class="box post rv" id="buy">
+      <div class="ph"><img src="favicon.png" alt=""><div><div class="who">Boomer (Dad)</div><div class="when">is feeling &#128526; tech savvy</div></div></div>
+      <div class="body cs">MY GRANDSON SHOWED ME HOW TO BUY THE $BOOMER. WRITING IT HERE SO I DONT FORGET</div>
+      <ol class="steps">
+        <li><b>GET PHANTOM.</b> It is a wallet but on the phone. Download the Phantom app or browser extension. Write the secret words on paper and put it in the safe NOT on the bookface.</li>
+        <li><b>GET SOL.</b> Buy SOL on an exchange or inside Phantom and send it to your Phantom wallet. (Linda this is not the sun)</li>
+        <li><b>GO TO PUMP.FUN.</b> Type it in the address bar not the search bar. Connect your Phantom.</li>
+        <li><b>PASTE THE CA.</b> Copy the official $BOOMER contract address from this page. CHECK IT. There are fakes out there just like the fake lottery emails.</li>
+        <li><b>BUY.</b> Pick how much, confirm in Phantom. Then call your son to tell him you did it.</li>
+      </ol>
+      <div class="acts"><button class="lk">Like</button><button class="cmtb">Comment</button><button class="shr">Share</button></div>
+    </article>
+
+    <!-- TOKENOMICS -->
+    <article class="box post rv" id="tokenomics">
+      <!-- only keep these claims if true at launch -->
+      <div class="ph"><img src="favicon.png" alt=""><div><div class="who">Boomer (Dad)</div><div class="when">shared a photo from <b>Funny Quotes 4 Real Men</b></div></div></div>
+      <div class="insp y"><div class="blob" aria-hidden="true">&#127866;&#128526;</div><p>ME: buys 1 coin<br>ALSO ME: tells the whole church</p></div>
+      <div class="tok"><div><b>1,000,000,000</b>total supply</div><div><b>Fair launch</b>on pump.fun</div><div><b>0</b>handshakes required</div></div>
+      <div class="ca"><code id="ca">Contract address revealed at launch</code><button class="fbbtn" id="copy">Copy</button></div>
+      <div class="acts"><button class="lk">Like</button><button class="cmtb">Comment</button><button class="shr">Share</button></div>
+      <div class="cmt"><i></i><div><b>Linda</b> is this the bitcoin</div></div>
+    </article>
+  </div>
+</div>
+
+<footer>
+  <div class="bdg"><span>BEST VIEWED IN INTERNET EXPLORER 6</span><span>FORWARD TO 10 FRIENDS</span><span>NO VIRUSES (SCANNED)</span><span>SHARE IF U AGREE</span></div>
+  <div>bookface &copy; whatever year it is &middot; About &middot; Help &middot; How do I log off</div>
+  <p>$BOOMER is a meme coin with no intrinsic value and no expectation of financial return. Not financial advice. No roadmap, no promises. Not affiliated with any social network, candy brand, beverage brand, or the creators of the wojak, "Be like Bill" or "This is Mike" memes. "bookface" is a parody. Several other tokens use the BOOMER name; this one is only the one whose CA is on this page. Crypto is risky; only spend what you'd be fine losing in the couch cushions.</p>
+</footer>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="photo viewer"><div class="bx"><div class="im"><img id="lbimg" src="meme_01.jpg" alt=""></div><div class="cm"><button class="x" id="lbx">Close</button><b class="who" style="color:var(--link)">Boomer (Dad)</b><p id="lbcap"></p><div class="cmt"><i></i><div><b>Linda</b> <span id="lbcmt"></span></div></div></div></div></div>
+
+<div class="pop" id="pop" role="dialog" aria-label="poke">
+  <div class="t"><span>bookface chat</span><button id="popx" aria-label="close">x</button></div>
+  <div class="b"><img src="meme_06.jpg" alt=""><span><b>Dad has poked you.</b><br>"hello this is dad. how do i make the letters small"</span></div>
+</div>
+
+<script>
+const CA = "";
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $=s=>document.querySelector(s);
+
+  /* parallax suburb */
+  const L=[...document.querySelectorAll('[data-speed]')];
+  const lawn=$('#lawn'),mowed=$('#mowed'),mower=$('#mower'),lbl=$('#lawnlbl');let tk=false,clipT=0;
+  function frame(){const y=scrollY;
+    if(!reduce)L.forEach(l=>{const s=+l.dataset.speed;const ty=s>0?Math.min(y*s,innerHeight*s*.9):y*s;l.style.transform=`translate3d(0,${ty.toFixed(1)}px,0)`});
+    /* mow lawn: progress = how far lawn has travelled through viewport */
+    const r=lawn.getBoundingClientRect();let p=(innerHeight-r.top)/(innerHeight+r.height);p=Math.min(1,Math.max(0,(p-.15)/.6));
+    mowed.style.width=(p*100)+'%';mower.style.left=(p*100)+'%';
+    lbl.textContent=p>=1?'LAWN: PERFECT. DAD IS PROUD':p>0?'MOWING... ('+Math.round(p*100)+'%)':'SCROLL TO MOW THE LAWN';
+    if(p>0&&p<1&&performance.now()-clipT>90&&!reduce){clipT=performance.now();for(let i=0;i<3;i++){const c=document.createElement('i');c.className='clip';c.style.left=(p*100-4)+'%';c.style.setProperty('--dx',(-20-Math.random()*50)+'px');lawn.appendChild(c);setTimeout(()=>c.remove(),800)}}
+    tk=false}
+  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(frame)}},{passive:true});
+  addEventListener('resize',frame);frame();
+
+  /* reveal */
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  /* like / share / comment buttons */
+  document.querySelectorAll('.lk').forEach(b=>b.onclick=()=>{b.classList.toggle('on');b.textContent=b.classList.contains('on')?'Unlike':'Like'});
+  document.querySelectorAll('.shr').forEach(b=>b.onclick=()=>{b.textContent='Shared! (to Linda)';setTimeout(()=>b.textContent='Share',1600)});
+  document.querySelectorAll('.cmtb').forEach(b=>b.onclick=()=>{b.textContent='Dad is typing...';setTimeout(()=>b.textContent='Comment',1600)});
+  let amen=2887;document.querySelectorAll('.amen').forEach(b=>b.onclick=()=>{amen++;$('#amens').textContent=amen.toLocaleString();b.textContent='AMEN!!';setTimeout(()=>b.textContent='Type AMEN',900)});
+  $('#smore').onclick=()=>$('#lore').classList.add('open');
+
+  /* album: every meme + remix */
+  const A=[['meme_01','me and linda at the lake','beautiful. who took this'],['meme_02','new car. paid CASH','is that the neighbors car'],['meme_03','my snacks. dont touch','that is MY candy'],['meme_04','the whole neighborhood. bbq at 4','why is there a girl in a bikini in this'],['meme_05','this is mike. be like mike','who is mike'],['meme_06','this is bill. bill is smart','bill is smart'],
+    ['remix_01','me and linda (filter)','too bright'],['remix_02','me and linda (blurry)','clean your camera'],['remix_03','me and me','why are there two of you'],['remix_04','me and linda (blue)','are we smurfs'],['remix_05','SHARE IF YOU AGREE','SHARED'],['remix_06','car again. still paid cash','we know']];
+  const al=$('#album');
+  A.forEach(([f,c,k])=>{const b=document.createElement('button');b.innerHTML=`<img src="${f}.jpg" alt="${c}" loading="lazy">`;
+    b.onclick=()=>{$('#lbimg').src=`${f}.jpg`;$('#lbimg').alt=c;$('#lbcap').textContent=c;$('#lbcmt').textContent=k;$('#lb').classList.add('on')};al.appendChild(b)});
+  const closeLb=()=>$('#lb').classList.remove('on');
+  $('#lbx').onclick=closeLb;$('#lb').onclick=e=>{if(e.target.id==='lb')closeLb()};
+  addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+
+  /* CA */
+  if(CA)$('#ca').textContent=CA;
+  $('#copy').onclick=()=>{const b=$('#copy');if(!CA){b.textContent='Soon';setTimeout(()=>b.textContent='Copy',1400);return}
+    (navigator.clipboard?navigator.clipboard.writeText(CA):Promise.reject()).then(()=>b.textContent='Copied',()=>b.textContent='Select it').finally(()=>setTimeout(()=>b.textContent='Copy',1400))};
+
+  $('#hits').textContent=String(1946+Math.floor(Date.now()/600000)%999999).padStart(7,'0');
+
+  /* poke */
+  setTimeout(()=>$('#pop').classList.add('on'),7000);
+  $('#popx').onclick=()=>$('#pop').classList.remove('on');
+})();
+</script>
+</body>
+</html>
